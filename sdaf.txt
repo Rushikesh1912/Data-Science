@@ -1,0 +1,953 @@
+1. Write an R script that checks if a number is divisible by both 2 and 3 using logical operators and Create a for loop to calculate the sum, average, minimum and maximum of the first 10 natural numbers.
+
+##1. Write an R script that checks if a number is divisible by both 2 and 3 using logical operators and Create a for loop to calculate the sum, average, minimum and maximum of the first 10 natural numbers.
+##Question 1
+# Check if a number is divisible by both 2 and 3
+number_to_check<-as.numeric(readline(prompt = "Enter a no to check if divisible by both 2 and 3:"))
+if (number_to_check %% 2 == 0 && number_to_check %% 3 == 0) {
+  cat(number_to_check, "is divisible by both 2 and 3.\n")
+} else {
+  cat(number_to_check, "is not divisible by both 2 and 3.\n")
+}
+
+# For loop to calculate the sum, average, minimum, and maximum of the first 10 natural numbers
+numbers <- 1:10
+
+sum_result <- 0
+for (num in numbers) {
+  sum_result <- sum_result+ num
+}
+
+average_result = sum_result / length(numbers)
+min_result <- min(numbers)
+max_result <- max(numbers)
+
+cat("Sum:", sum_result, "\n")
+cat("Average:", average_result, "\n")
+cat("Minimum:", min_result, "\n")
+cat("Maximum:", max_result, "\n")
+
+
+
+2. Write an R script that combines multiple logical conditions to filter elements from a list (or array) and Create a for loop to calculate the sum, average, minimum and maximum of the first 10 natural numbers
+
+# Create a list of numbers
+numbers <- 1:10
+
+# Filter elements from the list based on multiple conditions
+filtered_numbers <- numbers[numbers > 3 & numbers < 8]
+
+# Calculate the sum, average, minimum, and maximum of the first 10 natural numbers using a for loop
+sum <- 0
+min <- Inf
+max <- -Inf
+
+for (i in 1:10) {
+  sum <- sum + i
+  if (i < min) {
+    min <- i
+  }
+  if (i > max) {
+    max <- i
+  }
+}
+
+average = sum / 10
+
+# Print the filtered list and the calculated values
+cat("Filtered list: ", filtered_numbers, "\n")
+cat("Sum: ", sum, "\n")
+cat("Average: ", average, "\n")
+cat("Minimum: ", min, "\n")
+cat("Maximum: ", max, "\n")
+
+3. Write an R script that creates a dataframe and filters rows based on a specific condition using subsetting. Also, use a for loop to iterate over a numeric vector and create a new vector containing the squared values of each element.
+
+df<-data.frame(Value=c(1,2,65,23,12,4,5,6))
+filtered<-df[df$Value > 10,]
+cat("The filtered elements are: ", filtered)
+
+numeric<-1:10
+squared<-c()
+
+for ( i in numeric ) {
+  squared<-c(squared,i^2)
+}
+squared
+
+4. Write an R script that creates a multidimensional array and demonstrates how to perform array slicing to extract a specific subarray. Also, use a for loop to iterate over a numeric vector and create a new vector Addition of two vectors.
+
+arr<-array(1:18, dim = c(2,3,3))  
+arr
+subarr<-arr[ , ,2]
+#
+cat("SubArray: ",subarr)
+
+vector1<-1:5
+vector2<-3:8
+sum<-c()
+
+for(i in 1:length(vector1)) {
+  sum<-c(sum, vector1[i]+vector2[i])
+}
+cat("Sumvector: ",sum)
+
+
+5. Write an R script that creates a list (or array) of integers and performs the following operations: append, insert, delete, display min, max, sum and average and find any specific element.
+
+#Write an R script that creates a list (or array) of integers and performs the following operations:
+#append, insert, delete, display min, max, sum and average and find any specific element.
+numbers<-array(1:19)
+cat("The array is: ", numbers)
+numbers<-append(numbers, value=10)
+cat("The updated array is: ", numbers)
+numbers<-append(numbers, value=32, after = 5)
+cat("The array after insertion: ", numbers)
+numbers<-numbers[-4]
+cat("After deleting num at pos 4", numbers)
+cat(numbers)
+cat("Minimum= ", min(numbers))
+cat("Maximum= ", max(numbers))
+cat("Sum=", sum(numbers))
+cat("Avg= ", mean(numbers))
+find<-60
+if ( find %in% numbers) {
+  cat("Yes")
+} else {
+  cat("No")
+}
+  
+
+6. Write an R script that takes a user-input number and uses an if/else statement to determine whether it is positive, negative, or zero. Take some numbers from users and store in x and y vectors to plot any kind of graph using it.
+
+# Initialize vectors to store positive and negative numbers
+x <- numeric(0)
+y <- numeric(0)
+
+# Get user input for the number of values to enter
+num_values <- as.integer(readline(prompt = "Enter the number of values to input: "))
+
+# Loop to get user input for each value
+for (i in 1:num_values) {
+  # Get user input for the value
+  user_input <- as.numeric(readline(prompt = cat("Enter value", i, ": ")))
+  
+  # Check the sign of the input number and update vectors
+  if (user_input > 0) {
+    cat(user_input, "is positive.\n")
+    x <- c(x, user_input)
+  } else if (user_input < 0) {
+    cat(user_input, "is negative.\n")
+    y <- c(y, user_input)
+  } else {
+    cat(user_input, "is zero.\n")
+  }
+}
+
+# Display the vectors
+cat("\nPositive values (x):", x, "\n")
+cat("Negative values (y):", y, "\n")
+
+# Plot a graph using the values in x and y vectors
+plot(x, col = "green", pch = 16, main = "Positive and Negative Numbers", xlab = "Index", ylab = "Value", ylim = c(min(c(x, y)), max(c(x, y))))
+points(y, col = "red", pch = 16)
+legend("topright", legend = c("Positive", "Negative"), col = c("green", "red"), pch = 16)
+
+
+7. Write an R script to read a CSV file named into a dataframe and display the first few rows, summary, information of dataset. Display the data from csv in line, scatter, histogram and dot plot.
+
+
+##Question 7
+# Read CSV file into a dataframe
+df <- read.csv(choose.files())
+beer<-df$beer_servings
+# Display the first few rows of the dataframe
+cat("First few rows of the dataframe:\n")
+print(head(df))
+
+# Display summary of the dataframe
+cat("\nSummary of the dataframe:\n")
+print(summary(df))
+
+# Display information about the dataframe
+cat("\nInformation about the dataframe:\n")
+print(str(df))
+
+# Line plot
+cat("\nLine Plot:\n")
+plot(beer, type = "o", col = "blue", main = "Line Plot", xlab = "X-axis", ylab = "Y-axis")
+
+# Scatter plot
+cat("\nScatter Plot:\n")
+plot(beer, col = "red", main = "Scatter Plot", xlab = "X-axis", ylab = "Y-axis")
+
+
+# Histogram
+cat("\nHistogram:\n")
+hist(beer, col = "green", main = "Histogram", xlab = "X-axis", ylab = "Frequency")
+
+# Dot plot
+cat("\nDot Plot:\n")
+stripchart(beer, method = "stack", col = "purple", main = "Dot Plot", xlab = "X-axis")
+
+
+
+
+
+8. Implement a nested if/else statement to classify a given number as odd or even and, within each category, as positive, negative, or zero. Display the data from csv in line, scatter, histogram and dot plot.
+
+# Read CSV file into a dataframe
+df <- read.csv(choose.files())
+
+# Nested if/else statement to classify a given number
+given_number <- as.numeric(readline(prompt = "Enter a number: "))
+
+if (given_number %% 2 == 0) {
+  cat("The given number is even.\n")
+  if (given_number > 0) {
+    cat("The even number is positive.\n")
+  } else if (given_number < 0) {
+    cat("The even number is negative.\n")
+  } else {
+    cat("The even number is zero.\n")
+  }
+} else {
+  cat("The given number is odd.\n")
+  if (given_number > 0) {
+    cat("The odd number is positive.\n")
+  } else if (given_number < 0) {
+    cat("The odd number is negative.\n")
+  } else {
+    cat("The odd number is zero.\n")
+  }
+}
+
+# Line plot
+cat("\nLine Plot:\n")
+plot(df$Column1, type = "l", col = "blue", main = "Line Plot", xlab = "X-axis", ylab = "Y-axis")
+
+# Scatter plot
+cat("\nScatter Plot:\n")
+plot(df$Column1, df$Column2, col = "red", main = "Scatter Plot", xlab = "X-axis", ylab = "Y-axis")
+
+# Histogram
+cat("\nHistogram:\n")
+hist(df$Column1, col = "green", main = "Histogram", xlab = "X-axis", ylab = "Frequency")
+
+# Dot plot
+cat("\nDot Plot:\n")
+stripchart(df$Column1, method = "stack", col = "purple", main = "Dot Plot", xlab = "X-axis")
+
+9. Use the appropriate R package to read data from an Excel file ("data.xlsx") and print 5-point summary of the dataframe along with box-whisker plot and dot plot.
+
+# Install the readxl package (if not installed)
+# install.packages("readxl")
+
+# Load the readxl package
+library(readxl)
+
+# Read data from Excel file
+df <- read_excel(choose.files())
+
+# Display 5-point summary
+cat("5-Point Summary:\n")
+print(summary(df))
+
+# Box-whisker plot
+cat("\nBox-Whisker Plot:\n")
+boxplot(df, main = "Box-Whisker Plot")
+
+# Dot plot
+cat("\nDot Plot:\n")
+stripchart(df, method = "stack", col = "blue", main = "Dot Plot", xlab = "Variables")
+
+10. Write a script that reads data from a CSV file, calculates the average of a specific column, and uses an if/else statement to determine whether the average is above or below a certain threshold. Display the data from csv in line, scatter, histogram and dot plot.
+
+
+##Question 10
+# Read data from CSV file
+data <- read.csv(choose.files())  # Replace "your_file.csv" with the actual file name
+
+# Specify the column for which you want to calculate the average
+beer<-data$beer_servings  # Replace "your_column" with the actual column name
+
+# Calculate the average of the specified column
+average <- mean(beer, na.rm = TRUE)
+cat("This is the average of beer servings column:",average)
+# Set a threshold for the average
+threshold <- 50  # Replace 50 with your desired threshold
+
+# Determine whether the average is above or below the threshold
+if (average > threshold) {
+  cat("The average is above the threshold.\n")
+} else {
+  cat("The average is below or equal to the threshold.\n")
+}
+
+# Display the data in line plot
+plot(data$beer_servings, type = "o", main = "Line Plot", xlab = "Index", ylab = "Y-axis")
+
+# Display the data in scatter plot
+plot(data$spirit_servings, main = "Scatter Plot", xlab = "Index", ylab = "Y-axis")
+
+# Display the data in histogram
+hist(data$wine_servings, main = "Histogram", xlab ="X-axis",ylab="Yaxis", col = "lightblue")
+
+# Display the data in dot plot"
+stripchart(data$beer_servings, method = "stack", col = "red", main = "Dot Plot", xlab = "Index", ylab = "Frequency")
+
+
+
+11. Write an R script to create standardized (Z-) scores for several variables Using the preexisting Drinks.csv data file and Display the data from drinks.csv using line graph, scatter plot, histogram and dot plot.
+
+
+data <- read.csv(file.choose())
+# Create standardized (Z-) scores
+data$Z_beer_servings <- scale(data$beer_servings)
+print(data$Z_beer_servings)
+
+#For spirit
+mean_ss<-mean(data$spirit_servings)
+mean_ss
+sd_ss<-sd(data$spirit_servings)
+sd_ss
+#For spirit
+data$S_spirit_servings<-(data$spirit_servings - mean_ss) / (sd_ss)
+#For Spirit
+mean(data$S_spirit_servings)
+sd(data$S_spirit_servings)
+
+#scatter plot
+plot(data$beer_servings) 
+plot(data$spirit_servings,data$beer_servings) 
+
+#line graph
+plot(data$wine_servings, type = "l")
+
+#histogram
+hist(data$beer_servings)
+hist(data$wine_servings)
+
+#dot plot
+
+#dot plot using dotchart()
+dotchart(data$beer_servings, main = "Dot Plot ", xlab = "beer_servings")
+
+#dot plot using stripchart
+stripchart(data$spirit_servings, method = "jitter", main = "Dot Plot", xlab = "spirit_servings")
+
+
+
+12. Write an R script to run Frequencies to explore the distributions of several variables Using the preexisting Census.csv data file and display the data from csv file in line graph, scatter plot, histogram and dot plot.
+
+data<-read.csv(file.choose()) ## Read the dataset
+View(data) ## View the data-frame
+dim(data) ## find rows and columns
+str(data) ## find attribute types
+var=data$education.num ## select a column data
+mx=max(var) ## find max value in that column
+mx ## display max
+mn=min(var) ## find min value in that column
+mn ## display max
+width=(mx-mn)/5 ## divide the range into 5 bins
+width ## display width
+bins=seq(mn,mx,width) ## create list of class boundaries
+scores=cut(var,bins) ## group the data into bin
+table(scores) ## display frequency table
+transform(table(scores))
+freq_table=transform(table(scores))
+freq_table
+transform(freq_table,Rel_Freq=prop.table(Freq),Cum_Freq=cumsum(Freq))
+#### Histogram& Scatter plot
+hist(var)
+hist(var,breaks = bins, main= "Histogram for Education num", xlab= "Education num", col="blue")
+plot(var)
+
+#line graph
+plot(data$education.num, type = "l")
+
+#dot plot
+#dot plot using dotchart()
+dotchart(data$education.num, main = "Dot Plot ", xlab = "education.num")
+#dot plot using stripchart
+stripchart(data$education.num, method = "jitter", main = "Dot Plot", xlab = "education.num")
+
+#scatter plot
+plot(data$education.num) 
+
+#histogram
+hist(data$education.num)
+
+
+13. Write an R script to create two way cross tabulations to explore the relationship between several variables and to use the Chart Builder to visualize the relationship Using the preexisting Census.csv data file.
+
+##Question 13
+data=read.csv(file.choose())
+class(data)
+View(data)
+str(data)
+#normal cross tables
+tab1=table(data$age,data$marital.status) # comparing age with marital status
+tab1
+tab2=table(data$race,data$sex) # comparing race with sex
+tab2
+margin.table(tab2,1) # row totals
+margin.table(tab2,2) # columns totals
+prop.table(tab2) # proportions based on overall totals
+prop.table(tab2,1) # proportions based on row totals
+prop.table(tab2,2) #proportions based on column totals
+# Bar Charts
+library(ggplot2)
+dt=data.frame(tab2)
+dt
+colnames(dt)=c("Race","Sex","Freq")
+dt
+ggplot(dt,aes(x=Race, y=Freq , fill=Sex)) + geom_col()
+ggplot(dt,aes(x=Sex, y=Freq , fill=Race)) + geom_col()
+ggplot(dt, aes(x=Race, y=Freq, fill=Sex)) + geom_col(position="dodge")
+# Line Plots
+ggplot(dt, aes(x=Race, y=Freq, color=Sex, group=Sex)) + geom_line()
+
+14. Write an R script to visualize the relationship between two scale variables creating scatter plots and to quantify this relationship with the correlation coefficient using census.csv data file.
+
+##Question 14
+data=read.csv(file.choose()) # read dataset 
+########## Viewing Data ######## 
+View(data) 
+head(data) # first 6 observations str(data) # structure of dataset 
+plot(data$age,data$final.weight) 
+cor(data$age, data$final.weight) 
+plot(data$age,data$education.num) 
+cor(data$age, data$education.num) 
+plot(data$capital.loos,data$capital.gain) 
+cor(data$capital.loos, data$capital.gain)  
+
+15. Write an R script to run the Independent-Samples T Test, to interpret the output and visualize the results with an error bar chart. Using the preexisting Census.csv data file.
+
+##15. Write an R script to run the Independent-Samples T Test, to interpret the output and visualize the results with an error bar chart. Using the preexisting Census.csv data file.
+
+installed.packages('tidyverse')
+library(tidyverse)
+istt=read.csv(file.choose())
+View(istt)
+t.test(education.num~sex, var.equal=TRUE, data = istt)
+
+#Generating descriptive statistics for an independent-samples t-test
+
+#Code to generate mean, standard deviation and sample size for each groups
+
+descriptives = istt %>% group_by(sex) %>% summarise(mean = mean(education.num), sd = sd(education.num), n = n())
+
+descriptives
+View(descriptives)
+mean_difference = descriptives[1,2] - descriptives[2,2]
+mean_difference
+
+#Visualization 
+library(ggplot2)
+installed.packages("ggpubr")
+library(ggpubr)
+# Mean +/- standard deviation
+ggerrorplot(istt, x = "education.num", y = "sex", desc_stat = "mean_sd")
+
+# Change error plot type and add mean points
+ggerrorplot(istt , x = "education.num", y = "sex", 
+            desc_stat = "mean_sd",
+            error.plot = "errorbar",            # Change error plot type
+            add = "mean"                        # Add mean points
+)
+
+
+16. Write an R script to use One-Way ANOVA with post hoc tests to explore the relationship between several variables Using the preexisting data file Census.csv and represent it using any two suitable graphs.
+
+##Question 16
+install.packages("readr")
+install.packages("ggplot2")
+library(readr)
+library(ggplot2)
+data <- read_csv(file.choose())
+str(data) # Check the structure of your data
+summary(data) # View a summary of your data
+anova_result <- aov(data$`education-num` ~ data$sex, data = data)
+anova_result
+summary(anova_result)
+posthoc <- TukeyHSD(anova_result)
+print(posthoc)
+ggplot(data, aes(x = data$`education-num`, y = data$sex)) +
+  geom_boxplot() +
+  labs(title = "Income by Education_num")
+
+17. Write an R script that creates a dataframe and filters rows based on a specific condition using subsetting. use a for loop to iterate over two numeric vector and create a new vector containing the sum values of each element, and represent it using any two suitable graphs.
+
+# Create a dataframe with information about employees
+students <- data.frame(
+  Student_ID = c(1, 2, 3, 4, 5),
+  Age = c(18, 19, 20, 18, 19),
+  Subject1_Score = c(85, 90, 78, 92, 88),
+  Subject2_Score = c(75, 80, 85, 88, 90)
+)
+
+# Filter employees based on a condition (e.g., those with experience more than 10 years)
+subject1_filter <- students[students$Subject1_Score > 80, ]
+
+# Print the filtered dataframe
+cat("Filtered Dataframe:\n")
+print(subject1_filter)
+
+# Use a for loop to iterate over two numeric vectors and create a new vector containing the sum values
+sum_vector <- numeric(length = nrow(students))
+for (i in 1:nrow(students)) {
+  sum_vector[i] <- students$Subject1_Score[i] + students$Subject2_Score[i]
+}
+
+# Print the new vector
+cat("\nSum Vector:\n")
+print(sum_vector)
+
+students$Average_Score <- rowMeans(students[, c("Subject1_Score", "Subject2_Score")])
+
+# Bar plot
+barplot(students$Average_Score, names.arg = students$Student_ID, col = "skyblue", main = "Average Scores by Student",
+        xlab = "Student ID", ylab = "Average Score")
+
+sub1=students$Subject1_Score
+sub2=students$Subject2_Score
+# Create a scatter plot of scores in two subjects
+plot(sub1, main = "Scatter Plot of Subject1 vs Subject2 Scores",xlab = "Subject 1 Score",ylab="value", col = "darkgreen", pch = 16, ylim = c(min(c(sub1, sub2)), max(c(sub1, sub2))))
+points(sub2,col="blue",pch=16)
+legend("topright",legend = c("Subject 1","Subject 2"),col=c("darkgreen","blue"),pch = 16)
+
+18. Write an R script that creates a multidimensional array and demonstrates how to perform array slicing to extract a specific subarray. Also, use line or scatter plot to represent the matrix values visually, and represent it using any two suitable graphs.
+
+##Question 18
+# Create a 3D array (3x4x5)
+array_3d <- array(1:60, dim = c(3, 4, 5))
+
+# Print the 3D array
+cat("Original 3D Array:\n")
+print(array_3d)
+
+# Perform array slicing to extract a specific subarray (e.g., subarray from the first two dimensions)
+subarray <- array_3d[,,2]  # Extracts all rows and columns from the second "depth" (third dimension)
+
+# Print the subarray
+cat("\nExtracted Subarray:\n")
+print(subarray)
+
+# Flatten the subarray for plotting
+flattened_subarray <- as.vector(subarray)
+flattened_subarray
+# Plot the values using a line plot
+plot(flattened_subarray, type = "o", main = "Line Plot of Flattened Subarray",
+     xlab = "Index", ylab = "Value", col = "blue")
+
+# Plot the values using a scatter plot
+plot(flattened_subarray, pch = 16, main = "Scatter Plot of Flattened Subarray",
+     xlab = "Index", ylab = "Value", col = "green")
+
+19. Make stacked dotplots of the same variable from csv file provided to you based on the values of one of your categorical variables. For example, if your quantitative variable is GPAs of students, your categorical variable could be gender. Comment on the similarities and differences between the distributions for the different values of your categorical variable.
+
+##Question 19
+# Read the CSV file
+data <- read.csv(choose.files())
+
+# Stacked Dotplot of GPA based on Gender
+stripchart(data$hour.per.week ~ data$sex, main = "Stacked Dotplot of Hours per week by gender",
+        xlab = "Sex", ylab = "Hours_per_week", col = c("blue", "red"), pch = 19, method="stack")
+
+# Side-by-side boxplot of GPA by Gender
+boxplot(data$hour.per.week~ data$sex, data = data, col = c("lightblue", "lightpink"),
+        main = "Boxplot by hours per wekk by sex", xlab = "Sex", ylab = "Hours_per_week")
+
+
+20. Calculate summary measures (mean, standard deviation, first quartile, third quartile and interquartile range) for the variable you graphed above. Do this for the entire data set, as well as for the different groups formed by the categorical variable that you used to divide the data set.
+
+##QUESTION 20
+data <- read.csv(file.choose())
+# Summary measures for the entire dataset
+summary_all <- summary(data)
+summary_all
+# Summary measures by gender
+summary_by_gender <- tapply(data$hour.per.week, data$sex, summary)
+
+# Display the results
+cat("Summary measures for the entire dataset:\n")
+print(summary_all)
+
+cat("\nSummary measures by gender:\n")
+print(summary_by_gender)
+
+21. Create a histogram and a dotplot of the data. Comment on any symmetry or skewness and on the presence of clusters and any potential outliers. And draw a box-and-whisker plot for the entire data set.
+
+# Load the dataset
+data<- read.csv(choose.files())
+
+# Choose the variable for analysis (let's use 'beer_servings' for this example)
+variable <- data$beer_servings
+
+# Create a histogram
+hist(variable, col = "blue", main = "Histogram of Beer Servings", xlab = "Beer Servings", ylab = "Frequency")
+
+# Create a dotplot
+stripchart(variable, method = "stack", pch = 19, col = "green", main = "Dotplot of Beer Servings", xlab = "Beer Servings", ylab = "Density")
+
+# Create a box-and-whisker plot
+boxplot(variable, col = "orange", main = "Box-and-Whisker Plot of Beer Servings", ylab = "Beer Servings")
+
+# Calculate mean, median, and mode
+mean_value <- mean(variable, na.rm = TRUE)
+median_value <- median(variable, na.rm = TRUE)
+mode_value <- table(variable)[which.max(table(variable))]
+
+# Print mean, median, and mode
+cat("Mean:", mean_value, "\n")
+cat("Median:", median_value, "\n")
+cat("Mode:", mode_value, "\n")
+
+# Determine skewness based on the relationship between mean, median, and mode
+if (mean_value == median_value) {
+  cat("The distribution is approximately symmetric.\n")
+} else if (mean_value < median_value) {
+  cat("The distribution is left-skewed.\n")
+} else {
+  cat("The distribution is right-skewed.\n")
+}
+
+22. Prepare an appropriate type of frequency distribution table for one of the quantitative variables and then compute relative frequencies and cumulative relative frequencies using census.csv dataset.
+
+data<-read.csv(file.choose()) ## Read the dataset
+View(data) ## View the data-frame
+dim(data) ## find rows and columns
+str(data) ## find attribute types
+var=data$education.num ## select a column data
+mx=max(var) ## find max value in that column
+mx ## display max
+mn=min(var) ## find min value in that column
+mn ## display max
+width=(mx-mn)/5 ## divide the range into 5 bins
+width ## display width
+bins=seq(mn,mx,width) ## create list of class boundaries
+scores=cut(var,bins) ## group the data into bin
+table(scores) ## display frequency table
+transform(table(scores))
+freq_table=transform(table(scores))
+freq_table
+transform(freq_table,Rel_Freq=prop.table(Freq),Cum_Freq=cumsum(Freq))
+#### Histogram& Scatter plot
+hist(var)
+hist(var,breaks = bins, main= "Histogram for Education num", xlab= "Education num", col="blue")
+plot(var)
+
+#line graph
+plot(data$education.num, type = "l")
+
+#dot plot
+
+#dot plot using dotchart()
+dotchart(data$education.num, main = "Dot Plot ", xlab = "education.num")
+
+#dot plot using stripchart
+stripchart(data$education.num, method = "jitter", main = "Dot Plot", xlab = "education.num")
+
+23. Prepare an appropriate type of frequency distribution table for one of the quantitative variables and then compute relative frequencies and cumulative relative frequencies using Drinks.csv data file.
+
+data<-read.csv(file.choose()) ## Read the dataset
+View(data) ## View the data-frame
+dim(data) ## find rows and columns
+str(data) ## find attribute types
+var=data$beer_servings ## select a column data
+mx=max(var) ## find max value in that column
+mx ## display max
+mn=min(var) ## find min value in that column
+mn ## display max
+width=(mx-mn)/5 ## divide the range into 5 bins
+width ## display width
+bins=seq(mn,mx,width) ## create list of class boundaries
+scores=cut(var,bins) ## group the data into bin
+table(scores) ## display frequency table
+transform(table(scores))
+freq_table=transform(table(scores))
+freq_table
+transform(freq_table,Rel_Freq=prop.table(Freq),Cum_Freq=cumsum(Freq))
+#### Histogram& Scatter plot
+hist(var)
+hist(var,breaks = bins, main= "Histogram for beer_servings", xlab= "beer_servings", col="blue")
+plot(var)
+
+#line graph
+plot(data$beer_servings, type = "l")
+
+#dot plot
+
+#dot plot using dotchart()
+dotchart(data$beer_servings, main = "Dot Plot ", xlab = "beer_servings")
+
+#dot plot using stripchart
+stripchart(data$beer_servings, method = "jitter", main = "Dot Plot", xlab = "beer_servings")
+
+
+
+24. Write an R script to visualize the relationship between two scale variables creating scatter plots and to quantify this relationship with the correlation coefficient using Drinks.csv data file.
+
+# Load necessary libraries
+library(ggplot2)
+
+# Read data from CSV file
+data <- read.csv(file.choose())
+
+# Scatter plot using ggplot2
+ggplot(data, aes(x = beer_servings, y = spirit_servings)) +
+  geom_point() +
+  labs(title = "Scatter Plot", x = "beer_servings", y = "spirit_servings")
+
+# Calculate correlation coefficient
+correlation <- cor(data$beer_servings, data$wine_servings)
+cat("Correlation Coefficient:", correlation, "\n")
+
+25. Calculate summary measures (mean, standard deviation, first quartile, third quartile and interquartile range) for the variable you graphed above. Do this for the entire data set, as well as for the different groups formed by the categorical variable that you used to divide the data set using Census.csv data file.
+
+
+##Question 25
+##do it for numerical values one given
+data <- read.csv(choose.files())
+
+# Choose the variable for analysis ('hour-per-week' in this case)
+variable <- data$hour.per.week
+
+# Overall summary measures
+overall_mean <- mean(variable, na.rm = TRUE)
+overall_sd <- sd(variable, na.rm = TRUE)
+overall_q1 <- quantile(variable, 0.25, na.rm = TRUE)
+overall_q3 <- quantile(variable, 0.75, na.rm = TRUE)
+overall_iqr <- IQR(variable, na.rm = TRUE)
+
+cat("Overall Summary Measures:\n")
+cat("Mean:", overall_mean, "\n")
+cat("Standard Deviation:", overall_sd, "\n")
+cat("First Quartile (Q1):", overall_q1, "\n")
+cat("Third Quartile (Q3):", overall_q3, "\n")
+cat("Interquartile Range (IQR):", overall_iqr, "\n\n")
+
+# Summary measures for different groups based on 'income'
+income_groups <- unique(data$income)
+for (income_group in income_groups) {
+  subset_data <- subset(data, income == income_group)
+  group_mean <- mean(subset_data$hour.per.week, na.rm = TRUE)
+  group_sd <- sd(subset_data$hour.per.week, na.rm = TRUE)
+  group_q1 <- quantile(subset_data$hour.per.week, 0.25, na.rm = TRUE)
+  group_q3 <- quantile(subset_data$hour.per.week, 0.75, na.rm = TRUE)
+  group_iqr <- IQR(subset_data$hour.per.week, na.rm = TRUE)
+  
+  cat(paste("Summary Measures for", income_group, ":\n"))
+  cat("Mean:", group_mean, "\n")
+  cat("Standard Deviation:", group_sd, "\n")
+  cat("First Quartile (Q1):", group_q1, "\n")
+  cat("Third Quartile (Q3):", group_q3, "\n")
+  cat("Interquartile Range (IQR):", group_iqr, "\n\n")
+}
+##Do it for all categorical values one give
+variable <- data$hour.per.week
+
+# Overall summary measures
+overall_mean <- mean(variable, na.rm = TRUE)
+overall_sd <- sd(variable, na.rm = TRUE)
+overall_q1 <- quantile(variable, 0.25, na.rm = TRUE)
+overall_q3 <- quantile(variable, 0.75, na.rm = TRUE)
+overall_iqr <- IQR(variable, na.rm = TRUE)
+
+cat("Overall Summary Measures:\n")
+cat("Mean:", overall_mean, "\n")
+cat("Standard Deviation:", overall_sd, "\n")
+cat("First Quartile (Q1):", overall_q1, "\n")
+cat("Third Quartile (Q3):", overall_q3, "\n")
+cat("Interquartile Range (IQR):", overall_iqr, "\n\n")
+
+# Summary measures for different groups based on 'workclass'
+workclass_groups <- unique(data$workclass)
+for (workclass_group in workclass_groups) {
+  subset_data <- subset(data, workclass == workclass_group)
+  group_mean <- mean(subset_data$hour.per.week, na.rm = TRUE)
+  group_sd <- sd(subset_data$hour.per.week, na.rm = TRUE)
+  group_q1 <- quantile(subset_data$hour.per.week, 0.25, na.rm = TRUE)
+  group_q3 <- quantile(subset_data$hour.per.week, 0.75, na.rm = TRUE)
+  group_iqr <- IQR(subset_data$hour.per.week, na.rm = TRUE)
+  
+  cat(paste("Summary Measures for", workclass_group, ":\n"))
+  cat("Mean:", group_mean, "\n")
+  cat("Standard Deviation:", group_sd, "\n")
+  cat("First Quartile (Q1):", group_q1, "\n")
+  cat("Third Quartile (Q3):", group_q3, "\n")
+  cat("Interquartile Range (IQR):", group_iqr, "\n\n")
+}
+  
+  
+
+26. Use the appropriate R package to read data from an Excel file ("data.xlsx") and print 5-point summary of the dataframe along with box-whisker plot and dot plot using drinks.csv data file.
+
+# Load necessary library
+library(readxl)
+
+# Read data from Excel file
+data <- read.csv(file.choose())
+
+# Display 5-point summary
+cat("5-Point Summary:\n")
+cat("Min:", min(data$beer_servings), "\n")
+cat("1st Quartile:", quantile(data$beer_servings, 0.25), "\n")
+cat("Median:", median(data$beer_servings), "\n")
+cat("3rd Quartile:", quantile(data$beer_servings, 0.75), "\n")
+cat("Max:", max(data$beer_servings), "\n\n")
+
+# Create a box-whisker plot
+boxplot(data$beer_servings, main = "Box-Whisker Plot")
+
+# Generate a dot plot
+stripchart(data$beer_servings, method = "jitter", main = "Dot Plot")
+
+27. Write an R script to create standardized (Z-) scores for several variables Using the preexisting Drinks.csv data file and Display the data from census.csv using line graph, scatter plot, histogram and dot plot.
+
+##27. Write an R script to create standardized (Z-) scores for several variables Using the preexisting Drinks.csv data file and Display the data from census.csv using line graph, scatter plot, histogram and dot plot.
+
+#drinks.csv
+data <- read.csv(file.choose())
+# Create standardized (Z-) scores
+data$Z_beer_servings <- scale(data$beer_servings)
+print(data$Z_beer_servings)
+
+#For spirit
+mean_ss<-mean(data$spirit_servings)
+mean_ss
+sd_ss<-sd(data$spirit_servings)
+sd_ss
+#For spirit
+data$S_spirit_servings<-(data$spirit_servings - mean_ss) / (sd_ss)
+#For Spirit
+mean(data$S_spirit_servings)
+sd(data$S_spirit_servings)
+
+#scatter plot
+plot(data$beer_servings) 
+plot(data$spirit_servings,data$beer_servings) 
+
+#line graph
+plot(data$wine_servings, type = "l")
+
+#histogram
+hist(data$beer_servings)
+hist(data$wine_servings)
+
+#dot plot
+
+#dot plot using dotchart()
+dotchart(data$beer_servings, main = "Dot Plot ", xlab = "beer_servings")
+
+#dot plot using stripchart
+stripchart(data$spirit_servings, method = "jitter", main = "Dot Plot", xlab = "spirit_servings")
+
+##census.csv
+data <- read.csv(file.choose())
+# Create standardized (Z-) scores
+data$Z_education.num <- scale(data$education.num)
+print(data$Z_education.num)
+
+#For spirit
+mean_EN<-mean(data$education.num)
+mean_EN
+sd_EN<-sd(data$education.num)
+sd_EN
+#For spirit
+data$S_education.num<-(data$education.num - mean_EN) / (sd_EN)
+#For Spirit
+mean(data$S_education.num)
+sd(data$S_education.num)
+
+#scatter plot
+plot(data$education.num) 
+plot(data$age,data$education.num) 
+
+#line graph
+plot(data$education.num, type = "l")
+
+#histogram
+hist(data$education.num)
+hist(data$age)
+
+#dot plot using stripchart
+stripchart(data$education.num, method = "jitter", main = "Dot Plot", xlab = "education.num")
+
+
+
+28. Write an R script to run Frequencies to explore the distributions of several variables Using the preexisting provided .csv data file and display the data from csv file in line graph, scatter plot, histogram and dot plot
+data<-read.csv(file.choose()) ## Read the dataset
+View(data) ## View the data-frame
+dim(data) ## find rows and columns
+str(data) ## find attribute types
+var=data$education.num ## select a column data
+mx=max(var) ## find max value in that column
+mx ## display max
+mn=min(var) ## find min value in that column
+mn ## display max
+width=(mx-mn)/5 ## divide the range into 5 bins
+width ## display width
+bins=seq(mn,mx,width) ## create list of class boundaries
+scores=cut(var,bins) ## group the data into bin
+table(scores) ## display frequency table
+transform(table(scores))
+freq_table=transform(table(scores))
+freq_table
+transform(freq_table,Rel_Freq=prop.table(Freq),Cum_Freq=cumsum(Freq))
+#### Histogram& Scatter plot
+hist(var)
+hist(var,breaks = bins, main= "Histogram for Education num", xlab= "Education num", col="blue")
+plot(var)
+
+#line graph
+plot(data$education.num, type = "l")
+
+#dot plot
+#dot plot using dotchart()
+dotchart(data$education.num, main = "Dot Plot ", xlab = "education.num")
+#dot plot using stripchart
+stripchart(data$education.num, method = "jitter", main = "Dot Plot", xlab = "education.num")
+
+#scatter plot
+plot(data$education.num) 
+
+#histogram
+hist(data$education.num)
+
+29. Write an R script to obtain summary statistics for scale variables Using the preexisting Drinks.csv data file and visualize it using any two types of graphs.
+
+# Read data from Excel file
+data <- read.csv(file.choose())
+
+# Display summary
+cat(" Summary:\n")
+cat("Min:", min(data$beer_servings), "\n")
+cat("1st Quartile:", quantile(data$beer_servings, 0.25), "\n")
+cat("Median:", median(data$beer_servings), "\n")
+cat("3rd Quartile:", quantile(data$beer_servings, 0.75), "\n")
+cat("Max:", max(data$beer_servings), "\n\n")
+
+# Create a box-whisker plot
+boxplot(data$beer_servings, main = "Box-Whisker Plot")
+
+# Generate a dot plot
+stripchart(data$beer_servings, method = "jitter", main = "Dot Plot")
+
+30. Write an R script to visualize the relationship between two scale variables from provided data file creating scatter plots and to quantify this relationship with the correlation coefficient.
+
+# Load necessary libraries
+library(ggplot2)
+
+# Read data from CSV file
+data <- read.csv(file.choose())
+
+# Scatter plot using ggplot2
+ggplot(data, aes(x = beer_servings, y = spirit_servings)) +
+  geom_point() +
+  labs(title = "Scatter Plot", x = "beer_servings", y = "spirit_servings")
+
+# Calculate correlation coefficient
+correlation <- cor(data$beer_servings, data$wine_servings)
+cat("Correlation Coefficient:", correlation, "\n")

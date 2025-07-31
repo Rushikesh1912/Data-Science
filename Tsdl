@@ -1,0 +1,52 @@
+public class Reservation {
+    private int roomNumber;
+    private String guestName;
+    private String reservationDate;
+
+    public Reservation(int roomNumber, String guestName, String reservationDate) {
+        try {
+            if (roomNumber < 0) {
+                throw new IllegalArgumentException("Room number cannot be negative");
+            }
+            if (guestName == null || guestName.isEmpty()) {
+                throw new IllegalArgumentException("Guest name cannot be null or empty");
+            }
+            if (reservationDate == null || reservationDate.isEmpty()) {
+                throw new IllegalArgumentException("Reservation date cannot be null or empty");
+            }
+            this.roomNumber = roomNumber;
+            this.guestName = guestName;
+            this.reservationDate = reservationDate;
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error initializing reservation: " + e.getMessage());
+        } finally {
+            // Cleanup or resource management operations can be done here
+            System.out.println("Cleanup operations performed.");
+        }
+    }
+
+    public void displayReservationDetails() {
+        System.out.println("Room Number: " + roomNumber);
+        System.out.println("Guest Name: " + guestName);
+        System.out.println("Reservation Date: " + reservationDate);
+    }
+
+    public static void main(String[] args) {
+        // Test cases
+        // Negative room number
+        Reservation reservation1 = new Reservation(-101, "John Doe", "2024-02-20");
+        reservation1.displayReservationDetails();
+
+        // Null guest name
+        Reservation reservation2 = new Reservation(102, null, "2024-02-20");
+        reservation2.displayReservationDetails();
+
+        // Null reservation date
+        Reservation reservation3 = new Reservation(103, "Jane Doe", null);
+        reservation3.displayReservationDetails();
+
+        // Valid reservation
+        Reservation reservation4 = new Reservation(104, "Alice Smith", "2024-02-21");
+        reservation4.displayReservationDetails();
+    }
+}
